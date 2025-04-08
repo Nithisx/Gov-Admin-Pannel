@@ -11,7 +11,7 @@ const UserRow = ({ user }) => {
     e.stopPropagation();
     try {
       
-      const pdfUrl = `https://prohibited-helicopter-contribute-corn.trycloudflare.com${user.pdf}`;
+      const pdfUrl = `https://u-early-angeles-dl.trycloudflare.com${user.pdf}`;
       const response = await fetch(pdfUrl);
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -196,7 +196,7 @@ const Submission = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://prohibited-helicopter-contribute-corn.trycloudflare.com/form/')
+    fetch('https://u-early-angeles-dl.trycloudflare.com/form/')
       .then((response) => response.json())
       .then((data) => {
         let formattedUsers;

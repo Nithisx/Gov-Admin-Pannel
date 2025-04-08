@@ -6,7 +6,7 @@ export default function RegisterRequest() {
   const [message, setMessage] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const API_URL = "https://prohibited-helicopter-contribute-corn.trycloudflare.com/approve-signup/";
+  const API_URL = "https://u-early-angeles-dl.trycloudflare.com/approve-signup/";
 
   // Helper function to show message and auto-clear after 3 seconds
   const showMessage = (msg) => {
