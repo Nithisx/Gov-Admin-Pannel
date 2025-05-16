@@ -25,7 +25,7 @@ export default function Download() {
 
   useEffect(() => {
     // Fetch data from API
-    fetch("https://u-early-angeles-dl.trycloudflare.com/form/")
+    fetch("https://ozone-travels-hist-atmospheric.trycloudflare.com/form/")
       .then((response) => response.json())
       .then((data) => {
         const results = Array.isArray(data) ? data : [data];

@@ -196,7 +196,7 @@ const Submission = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://u-early-angeles-dl.trycloudflare.com/form/')
+    fetch('https://ozone-travels-hist-atmospheric.trycloudflare.com/form/')
       .then((response) => response.json())
       .then((data) => {
         let formattedUsers;
