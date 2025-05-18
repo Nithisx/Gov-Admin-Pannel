@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { CheckCircle, XCircle, User, Mail, Phone, BookOpen, Building, Loader } from 'lucide-react';
+import {
+  CheckCircle,
+  XCircle,
+  User,
+  Mail,
+  Phone,
+  BookOpen,
+  Building,
+  Loader,
+} from "lucide-react";
 
 export default function RegisterRequest() {
   const [requests, setRequests] = useState([]);
   const [message, setMessage] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const API_URL = "https://ozone-travels-hist-atmospheric.trycloudflare.com/approve-signup/";
+  const API_URL =
+    "https://gentle-nine-aging-chronicles.trycloudflare.com/approve-signup/";
 
   // Helper function to show message and auto-clear after 3 seconds
   const showMessage = (msg) => {
@@ -40,7 +50,10 @@ export default function RegisterRequest() {
       setRequests((prev) => prev.filter((req) => req.id !== id));
     } catch (error) {
       console.error("Error accepting request:", error);
-      showMessage({ text: "Failed to accept request. Try again.", type: "error" });
+      showMessage({
+        text: "Failed to accept request. Try again.",
+        type: "error",
+      });
     } finally {
       setProcessing(false);
     }
@@ -58,7 +71,10 @@ export default function RegisterRequest() {
       setRequests((prev) => prev.filter((req) => req.id !== id));
     } catch (error) {
       console.error("Error declining request:", error);
-      showMessage({ text: "Failed to decline request. Try again.", type: "error" });
+      showMessage({
+        text: "Failed to decline request. Try again.",
+        type: "error",
+      });
     } finally {
       setProcessing(false);
     }
@@ -91,13 +107,15 @@ export default function RegisterRequest() {
           100% { transform: rotate(360deg); }
         }
       `}</style>
-      
+
       <div className="w-full max-w-6xl px-4">
         <div className="flex items-center justify-center mb-6">
           <UserPlus size={24} className="text-blue-600 mr-2" />
-          <h2 className="text-3xl font-bold text-gray-800">Register Requests</h2>
+          <h2 className="text-3xl font-bold text-gray-800">
+            Register Requests
+          </h2>
         </div>
-        
+
         {isLoading ? (
           <div className="flex justify-center py-20">
             <Loader size={40} className="text-blue-500 spin" />
@@ -145,9 +163,14 @@ export default function RegisterRequest() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {requests.map((req) => (
-                    <tr key={req.id} className="hover:bg-blue-50 transition-colors table-row-animate">
+                    <tr
+                      key={req.id}
+                      className="hover:bg-blue-50 transition-colors table-row-animate"
+                    >
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{req.name}</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          {req.name}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">{req.email}</div>
@@ -160,7 +183,9 @@ export default function RegisterRequest() {
                           {req.role}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{req.College_Name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {req.College_Name}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
                         <div className="flex justify-center space-x-2">
                           <button
@@ -188,7 +213,9 @@ export default function RegisterRequest() {
                       <td colSpan="6" className="px-6 py-10 text-center">
                         <div className="flex flex-col items-center justify-center text-gray-500">
                           <InboxIcon size={40} className="mb-2 text-gray-400" />
-                          <p className="text-lg">No register requests available.</p>
+                          <p className="text-lg">
+                            No register requests available.
+                          </p>
                         </div>
                       </td>
                     </tr>
@@ -199,7 +226,7 @@ export default function RegisterRequest() {
           </div>
         )}
       </div>
-      
+
       {/* Animated message banner */}
       {message && (
         <div
@@ -222,7 +249,18 @@ export default function RegisterRequest() {
 
 // Missing icon components that weren't imported above
 const UserPlus = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={props.size || 24}
+    height={props.size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={props.className}
+  >
     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
     <circle cx="9" cy="7" r="4"></circle>
     <line x1="19" y1="8" x2="19" y2="14"></line>
@@ -231,7 +269,18 @@ const UserPlus = (props) => (
 );
 
 const InboxIcon = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={props.size || 24}
+    height={props.size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={props.className}
+  >
     <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
     <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
   </svg>

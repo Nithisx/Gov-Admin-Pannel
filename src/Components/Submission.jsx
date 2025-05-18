@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const UserRow = ({ user }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -10,24 +10,23 @@ const UserRow = ({ user }) => {
   const handleDownload = async (e) => {
     e.stopPropagation();
     try {
-      
       const pdfUrl = `https://u-early-angeles-dl.trycloudflare.com${user.pdf}`;
       const response = await fetch(pdfUrl);
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      const filename = user.pdf.split('/').pop() || 'download.pdf';
+      const link = document.createElement("a");
+      const filename = user.pdf.split("/").pop() || "download.pdf";
       link.href = url;
-      link.setAttribute('download', filename);
+      link.setAttribute("download", filename);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error downloading the file:', error);
+      console.error("Error downloading the file:", error);
     }
   };
 
@@ -37,7 +36,9 @@ const UserRow = ({ user }) => {
         onClick={toggleExpand}
         className="border-b border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
       >
-        <td className="px-6 py-4 text-sm font-medium text-gray-900">{user.guideName}</td>
+        <td className="px-6 py-4 text-sm font-medium text-gray-900">
+          {user.guideName}
+        </td>
         <td className="px-6 py-4 text-sm text-gray-500">{user.designation}</td>
         <td className="px-6 py-4 text-sm text-gray-500">{user.department}</td>
         <td className="px-6 py-4 text-sm text-gray-500">{user.mobileNumber}</td>
@@ -61,8 +62,7 @@ const UserRow = ({ user }) => {
                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            
-             PDF
+            PDF
           </button>
           <span
             onClick={(e) => {
@@ -70,7 +70,7 @@ const UserRow = ({ user }) => {
               toggleExpand();
             }}
             className={`absolute right-4 transition-transform duration-300 ${
-              isExpanded ? 'rotate-180' : 'rotate-0'
+              isExpanded ? "rotate-180" : "rotate-0"
             }`}
           >
             <svg
@@ -90,8 +90,8 @@ const UserRow = ({ user }) => {
           <div
             className={`relative z-50 transition-all duration-500 ease-in-out ${
               isExpanded
-                ? 'max-h-[80vh] opacity-100 overflow-auto'
-                : 'max-h-0 opacity-0 overflow-hidden'
+                ? "max-h-[80vh] opacity-100 overflow-auto"
+                : "max-h-0 opacity-0 overflow-hidden"
             }`}
           >
             <div className="bg-gradient-to-b from-gray-50 to-white p-6 shadow-inner">
@@ -109,16 +109,24 @@ const UserRow = ({ user }) => {
                     Project Information
                   </h3>
                   <p className="mb-2 flex">
-                    <span className="font-medium text-gray-600 w-32">Project Title:</span>
+                    <span className="font-medium text-gray-600 w-32">
+                      Project Title:
+                    </span>
                     <span className="text-gray-800">{user.project_title}</span>
                   </p>
                   <p className="mb-2 flex">
-                    <span className="font-medium text-gray-600 w-32">Date:</span>
+                    <span className="font-medium text-gray-600 w-32">
+                      Date:
+                    </span>
                     <span className="text-gray-800">{user.date}</span>
                   </p>
                   <p className="mb-2 flex">
-                    <span className="font-medium text-gray-600 w-32">Similar Project:</span>
-                    <span className="text-gray-800">{user.similar_project}</span>
+                    <span className="font-medium text-gray-600 w-32">
+                      Similar Project:
+                    </span>
+                    <span className="text-gray-800">
+                      {user.similar_project}
+                    </span>
                   </p>
                 </div>
                 <div className="bg-white rounded-lg p-4 shadow">
@@ -126,19 +134,25 @@ const UserRow = ({ user }) => {
                     Academic Details
                   </h3>
                   <p className="mb-2 flex">
-                    <span className="font-medium text-gray-600 w-32">Course:</span>
-                    <span className="text-gray-800">{user.course_studying}</span>
+                    <span className="font-medium text-gray-600 w-32">
+                      Course:
+                    </span>
+                    <span className="text-gray-800">
+                      {user.course_studying}
+                    </span>
                   </p>
                   <p className="mb-2 flex">
-                    <span className="font-medium text-gray-600 w-32">Details Attached:</span>
+                    <span className="font-medium text-gray-600 w-32">
+                      Details Attached:
+                    </span>
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium ${
                         user.project_details_attached
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
+                          ? "bg-green-100 text-green-800"
+                          : "bg-red-100 text-red-800"
                       }`}
                     >
-                      {user.project_details_attached ? 'Yes' : 'No'}
+                      {user.project_details_attached ? "Yes" : "No"}
                     </span>
                   </p>
                 </div>
@@ -167,9 +181,15 @@ const UserRow = ({ user }) => {
                       {user.student_details &&
                         user.student_details.map((student, idx) => (
                           <tr key={idx} className="hover:bg-gray-50">
-                            <td className="px-4 py-2 text-sm text-gray-800">{student.name}</td>
-                            <td className="px-4 py-2 text-sm text-gray-600">{student.mobile}</td>
-                            <td className="px-4 py-2 text-sm text-gray-600">{student.email}</td>
+                            <td className="px-4 py-2 text-sm text-gray-800">
+                              {student.name}
+                            </td>
+                            <td className="px-4 py-2 text-sm text-gray-600">
+                              {student.mobile}
+                            </td>
+                            <td className="px-4 py-2 text-sm text-gray-600">
+                              {student.email}
+                            </td>
                           </tr>
                         ))}
                     </tbody>
@@ -187,16 +207,16 @@ const UserRow = ({ user }) => {
 
 const Submission = () => {
   const [filter, setFilter] = useState({
-    name: '',
-    designation: '',
-    department: '',
-    institution: ''
+    name: "",
+    designation: "",
+    department: "",
+    institution: "",
   });
 
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://ozone-travels-hist-atmospheric.trycloudflare.com/form/')
+    fetch("https://gentle-nine-aging-chronicles.trycloudflare.com/form/")
       .then((response) => response.json())
       .then((data) => {
         let formattedUsers;
@@ -205,7 +225,7 @@ const Submission = () => {
             ...item,
             guideName: item.guide_name,
             mobileNumber: item.mobile_number,
-            institutionAddress: item.institution_address
+            institutionAddress: item.institution_address,
           }));
         } else {
           formattedUsers = [
@@ -213,14 +233,14 @@ const Submission = () => {
               ...data,
               guideName: data.guide_name,
               mobileNumber: data.mobile_number,
-              institutionAddress: data.institution_address
-            }
+              institutionAddress: data.institution_address,
+            },
           ];
         }
         setUsers(formattedUsers);
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       });
   }, []);
 
@@ -228,16 +248,20 @@ const Submission = () => {
     const { name, value } = e.target;
     setFilter((prevFilter) => ({
       ...prevFilter,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const filteredUsers = users.filter((user) => {
     return (
       user.guideName.toLowerCase().includes(filter.name.toLowerCase()) &&
-      user.designation.toLowerCase().includes(filter.designation.toLowerCase()) &&
+      user.designation
+        .toLowerCase()
+        .includes(filter.designation.toLowerCase()) &&
       user.department.toLowerCase().includes(filter.department.toLowerCase()) &&
-      user.institutionAddress.toLowerCase().includes(filter.institution.toLowerCase())
+      user.institutionAddress
+        .toLowerCase()
+        .includes(filter.institution.toLowerCase())
     );
   });
 
@@ -251,7 +275,9 @@ const Submission = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Guide Name Filter */}
           <div className="relative">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Guide Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Guide Name
+            </label>
             <input
               type="text"
               name="name"
@@ -262,7 +288,7 @@ const Submission = () => {
             />
             {filter.name && (
               <button
-                onClick={() => setFilter((prev) => ({ ...prev, name: '' }))}
+                onClick={() => setFilter((prev) => ({ ...prev, name: "" }))}
                 className="absolute right-3 top-9 text-gray-400 hover:text-gray-600"
               >
                 <svg
@@ -279,7 +305,9 @@ const Submission = () => {
           </div>
           {/* Designation Filter */}
           <div className="relative">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Designation</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Designation
+            </label>
             <input
               type="text"
               name="designation"
@@ -290,7 +318,9 @@ const Submission = () => {
             />
             {filter.designation && (
               <button
-                onClick={() => setFilter((prev) => ({ ...prev, designation: '' }))}
+                onClick={() =>
+                  setFilter((prev) => ({ ...prev, designation: "" }))
+                }
                 className="absolute right-3 top-9 text-gray-400 hover:text-gray-600"
               >
                 <svg
@@ -307,7 +337,9 @@ const Submission = () => {
           </div>
           {/* Department Filter */}
           <div className="relative">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Department
+            </label>
             <input
               type="text"
               name="department"
@@ -318,7 +350,9 @@ const Submission = () => {
             />
             {filter.department && (
               <button
-                onClick={() => setFilter((prev) => ({ ...prev, department: '' }))}
+                onClick={() =>
+                  setFilter((prev) => ({ ...prev, department: "" }))
+                }
                 className="absolute right-3 top-9 text-gray-400 hover:text-gray-600"
               >
                 <svg
@@ -335,7 +369,9 @@ const Submission = () => {
           </div>
           {/* Institution Filter */}
           <div className="relative">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Institution</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Institution
+            </label>
             <input
               type="text"
               name="institution"
@@ -346,7 +382,9 @@ const Submission = () => {
             />
             {filter.institution && (
               <button
-                onClick={() => setFilter((prev) => ({ ...prev, institution: '' }))}
+                onClick={() =>
+                  setFilter((prev) => ({ ...prev, institution: "" }))
+                }
                 className="absolute right-3 top-9 text-gray-400 hover:text-gray-600"
               >
                 <svg
@@ -362,7 +400,10 @@ const Submission = () => {
             )}
           </div>
         </div>
-        {(filter.name || filter.designation || filter.department || filter.institution) && (
+        {(filter.name ||
+          filter.designation ||
+          filter.department ||
+          filter.institution) && (
           <div className="mt-4 flex items-center">
             <span className="text-sm text-gray-500 mr-2">Active filters:</span>
             <div className="flex flex-wrap gap-2">
@@ -370,7 +411,7 @@ const Submission = () => {
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                   Name: {filter.name}
                   <button
-                    onClick={() => setFilter((prev) => ({ ...prev, name: '' }))}
+                    onClick={() => setFilter((prev) => ({ ...prev, name: "" }))}
                     className="ml-1 text-blue-500 hover:text-blue-700"
                   >
                     <svg
@@ -389,7 +430,9 @@ const Submission = () => {
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                   Designation: {filter.designation}
                   <button
-                    onClick={() => setFilter((prev) => ({ ...prev, designation: '' }))}
+                    onClick={() =>
+                      setFilter((prev) => ({ ...prev, designation: "" }))
+                    }
                     className="ml-1 text-green-500 hover:text-green-700"
                   >
                     <svg
@@ -408,7 +451,9 @@ const Submission = () => {
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                   Department: {filter.department}
                   <button
-                    onClick={() => setFilter((prev) => ({ ...prev, department: '' }))}
+                    onClick={() =>
+                      setFilter((prev) => ({ ...prev, department: "" }))
+                    }
                     className="ml-1 text-purple-500 hover:text-purple-700"
                   >
                     <svg
@@ -427,7 +472,9 @@ const Submission = () => {
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                   Institution: {filter.institution}
                   <button
-                    onClick={() => setFilter((prev) => ({ ...prev, institution: '' }))}
+                    onClick={() =>
+                      setFilter((prev) => ({ ...prev, institution: "" }))
+                    }
                     className="ml-1 text-yellow-500 hover:text-yellow-700"
                   >
                     <svg
@@ -444,7 +491,12 @@ const Submission = () => {
               )}
               <button
                 onClick={() =>
-                  setFilter({ name: '', designation: '', department: '', institution: '' })
+                  setFilter({
+                    name: "",
+                    designation: "",
+                    department: "",
+                    institution: "",
+                  })
                 }
                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 hover:bg-red-200"
               >
@@ -458,10 +510,12 @@ const Submission = () => {
       {/* Table of User Submissions */}
       <div className="mt-8 bg-white shadow rounded-lg overflow-hidden">
         <div className="flex justify-between items-center p-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-700">User Submissions</h3>
+          <h3 className="text-lg font-semibold text-gray-700">
+            User Submissions
+          </h3>
           <div className="text-sm text-gray-500">
-            Showing {filteredUsers.length}{' '}
-            {filteredUsers.length === 1 ? 'entry' : 'entries'}
+            Showing {filteredUsers.length}{" "}
+            {filteredUsers.length === 1 ? "entry" : "entries"}
           </div>
         </div>
         <div className="overflow-x-auto">
@@ -562,7 +616,10 @@ const Submission = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6" className="px-6 py-10 text-center text-gray-500">
+                  <td
+                    colSpan="6"
+                    className="px-6 py-10 text-center text-gray-500"
+                  >
                     No matching records found
                   </td>
                 </tr>
@@ -574,9 +631,10 @@ const Submission = () => {
         {filteredUsers.length > 0 && (
           <div className="px-5 py-3 border-t border-gray-200 flex items-center justify-between">
             <div className="text-sm text-gray-500">
-              Showing <span className="font-medium">1</span> to{' '}
-              <span className="font-medium">{filteredUsers.length}</span> of{' '}
-              <span className="font-medium">{filteredUsers.length}</span> entries
+              Showing <span className="font-medium">1</span> to{" "}
+              <span className="font-medium">{filteredUsers.length}</span> of{" "}
+              <span className="font-medium">{filteredUsers.length}</span>{" "}
+              entries
             </div>
             <div className="flex-1 flex justify-end">
               <button
