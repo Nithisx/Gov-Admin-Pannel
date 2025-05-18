@@ -16,7 +16,7 @@ export default function RegisterRequest() {
   const [processing, setProcessing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const API_URL =
-    "https://gentle-nine-aging-chronicles.trycloudflare.com/approve-signup/";
+    "https://gothic-scout-georgia-john.trycloudflare.com/approve-signup/";
 
   // Helper function to show message and auto-clear after 3 seconds
   const showMessage = (msg) => {

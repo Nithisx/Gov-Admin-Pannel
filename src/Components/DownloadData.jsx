@@ -27,7 +27,7 @@ export default function Download() {
 
   useEffect(() => {
     // Fetch data from API
-    fetch("https://gentle-nine-aging-chronicles.trycloudflare.com/form/")
+    fetch("https://gothic-scout-georgia-john.trycloudflare.com/form/")
       .then((response) => response.json())
       .then((data) => {
         const results = Array.isArray(data) ? data : [data];

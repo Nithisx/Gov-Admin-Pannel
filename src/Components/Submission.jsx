@@ -216,7 +216,7 @@ const Submission = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://gentle-nine-aging-chronicles.trycloudflare.com/form/")
+    fetch("https://gothic-scout-georgia-john.trycloudflare.com/form/")
       .then((response) => response.json())
       .then((data) => {
         let formattedUsers;
